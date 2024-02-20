@@ -16,6 +16,6 @@ class DeletePostFeature
     }
 
     public function handle($id): void{
-        $this->deletePostAction->handle($id, $this->posts);
+        $this->deletePostAction->handle($id);
     }
 }

@@ -8,14 +8,15 @@ use App\Models\Category;
 class AddCate
 {
     public function __construct(
-        protected Category $categories
+        protected Category $category
     )
     {
     }
 
-    public function handle(CategoryDTO $categoryDTO){
-        $this->categories->title = $categoryDTO->getTitle();
-        $this->categories->slug = $categoryDTO->getSlug();
-        $this->categories->save();
+    public function handle(CategoryDTO $categoryDTO): void
+    {
+        $this->category->title = $categoryDTO->getTitle();
+        $this->category->slug = $categoryDTO->getSlug();
+        $this->category->save();
     }
 }

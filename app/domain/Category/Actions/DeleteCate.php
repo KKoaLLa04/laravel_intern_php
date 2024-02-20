@@ -12,20 +12,21 @@ class DeleteCate
 {
     public function __construct(
         protected Posts $posts,
+        protected Category $category,
     )
     {
     }
 
-    public function handle(Request $request, Category $categories){
+    public function handle(Request $request){
         $id = $request->id;
         if(!empty($id)){
-            $cateDetail = $categories->find($id);
+            $cateDetail = $this->category->find($id);
             $postCount = $this->posts->where('cate_id', $id)->get()->count();
             if($postCount>0){
                 Session::flash('error','Danh mục còn '. $postCount .' bài viết. Không thể xóa');
             }else{
                 if(!empty($cateDetail)){
-                    $categories->destroy($cateDetail->id);
+                    $this->category->destroy($cateDetail->id);
                 }
                 Session::flash('msg','Xóa danh mục bài viết thành công');
             }

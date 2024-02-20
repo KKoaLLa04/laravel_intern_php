@@ -16,6 +16,6 @@ class AddPostFeature
     }
 
     public function handle(PostsDTO $postsDTO): void{
-        $this->addPostAction->handle($postsDTO, $this->posts);
+        $this->addPostAction->handle($postsDTO);
     }
 }

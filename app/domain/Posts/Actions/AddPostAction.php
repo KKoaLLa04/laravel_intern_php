@@ -9,13 +9,20 @@ use Illuminate\Support\Facades\Auth;
 
 class AddPostAction
 {
-    public function handle(PostsDTO $postDTO, Posts $postsModel){
-        $postsModel->title = $postDTO->getTitle();
-        $postsModel->description = $postDTO->getDescription();
-        $postsModel->content = $postDTO->getContent();
-        $postsModel->slug = $postDTO->getSlug();
-        $postsModel->cate_id = $postDTO->getCateId();
-        $postsModel->user_id = Auth::user()->id;
+    public function __construct(
+        protected Posts $posts,
+    )
+    {
+    }
+
+    public function handle(PostsDTO $postDTO): void
+    {
+        $this->posts->title = $postDTO->getTitle();
+        $this->posts->description = $postDTO->getDescription();
+        $this->posts->content = $postDTO->getContent();
+        $this->posts->slug = $postDTO->getSlug();
+        $this->posts->cate_id = $postDTO->getCateId();
+        $this->posts->user_id = Auth::user()->id;
 
         // xu ly hinh anh
         $thumbnail = $postDTO->getThumbnail();
@@ -27,8 +34,8 @@ class AddPostAction
         $path = 'uploads/posts';
         $thumbnail->move($path, $thumbnailNewName);
 
-        $postsModel->thumbnail = $thumbnailNewName;
+        $this->posts->thumbnail = $thumbnailNewName;
 
-        $postsModel->save();
+        $this->posts->save();
     }
 }

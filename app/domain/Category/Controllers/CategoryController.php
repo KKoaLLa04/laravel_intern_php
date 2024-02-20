@@ -44,14 +44,12 @@ class CategoryController extends Controller
     public function post_add(CategoryRequest $categoryRequest): \Illuminate\Http\RedirectResponse
     {
         $data = $categoryRequest->getDTO();
-        $this->addCategoryFeature->handle($data, $this->categories);
+        $this->addCategoryFeature->handle($data);
         return back()->with('msg', 'Thêm danh mục bài viết thành công!');
     }
 
     public function edit($id, FindCateRequest $findCateRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-//        $findCateDTO = new FindCateDTO();
-//        $findCateDTO->setId($id);
         $dataDTO = $findCateRequest->getDTO();
         $cateDetail = $this->findCateFeature->handle($dataDTO);
         return view('backend.category.edit', compact('cateDetail'));
@@ -66,7 +64,7 @@ class CategoryController extends Controller
 
     public function delete(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $this->deleteCategoryFeature->handle($request, $this->categories);
+        $this->deleteCategoryFeature->handle($request);
         return back();
     }
 }

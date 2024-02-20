@@ -35,7 +35,8 @@ class HomeController extends Controller
         return view('client.pages.home', compact('data'));
     }
 
-    public function detail(DetailRequest $detailRequest){
+    public function detail(DetailRequest $detailRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         $data = $detailRequest->getDTO();
         $dataDetail = $this->getDetailFeature->handle($data);
         $dataLastest = $this->getDataLatestFeature->handle();
@@ -49,13 +50,15 @@ class HomeController extends Controller
         return view('client.pages.detail', compact('dataDetail', 'dataLastest', 'commentList', 'commentChildren', 'commentInfoCookie'));
     }
 
-    public function comments(CommentRequest $commentRequest){
+    public function comments(CommentRequest $commentRequest): \Illuminate\Http\RedirectResponse
+    {
         $data = $commentRequest->getDTO();
         $this->commentFeature->handle($data);
         return back()->with('msg','Thêm bình luận thành công');
     }
 
-    public function comment_reply(DetailRequest $detailRequest){
+    public function comment_reply(DetailRequest $detailRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         $data = $detailRequest->getDTO();
         $dataDetail = $this->getDetailFeature->handle($data);
         $dataLastest = $this->getDataLatestFeature->handle();
@@ -70,7 +73,8 @@ class HomeController extends Controller
         return view('client.pages.detail', compact('dataDetail', 'dataLastest', 'commentList', 'commentReply', 'commentChildren', 'commentInfoCookie'));
     }
 
-    public function handleReplyComment(CommentRequest $commentRequest){
+    public function handleReplyComment(CommentRequest $commentRequest): \Illuminate\Http\RedirectResponse
+    {
         $data = $commentRequest->getDTO();
         $this->replyCommentFeature->handle($data);
         return back()->with('msg','Trả lời bình luận thành công');

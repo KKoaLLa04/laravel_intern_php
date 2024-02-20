@@ -10,13 +10,12 @@ use Illuminate\Http\Request;
 class DeleteCategoryFeature
 {
     public function __construct(
-        protected Category   $categories,
         protected DeleteCate $deleteCate,
     )
     {
     }
 
-    public function handle(Request $request, Category $categories): void{
-        $this->deleteCate->handle($request, $categories);
+    public function handle(Request $request): void{
+        $this->deleteCate->handle($request);
     }
 }

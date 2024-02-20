@@ -12,8 +12,8 @@ class DeletedPostAction
     {
     }
 
-    public function handle(){
-        $data = $this->posts::with(['category','users'])->onlyTrashed()->get();
-        return $data;
+    public function handle(): void
+    {
+        $this->posts::with(['category','users'])->onlyTrashed()->get();
     }
 }

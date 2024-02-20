@@ -7,14 +7,21 @@ use App\Models\Posts;
 
 class DeletePostAction
 {
-    public function handle($id,Posts $posts){
-        $postDetail = $posts->find($id);
+    public function __construct(
+        protected Posts $posts,
+    )
+    {
+    }
+
+    public function handle($id): void
+    {
+        $postDetail = $this->posts->find($id);
         if(!empty($postDetail)){
 //            $path = 'uploads/posts/'.$postDetail->thumbnail;
 //            if(file_exists($path)){
 //                unlink($path);
 //            }
-            $posts->destroy($postDetail->id);
+            $this->posts->destroy($postDetail->id);
         }
     }
 }

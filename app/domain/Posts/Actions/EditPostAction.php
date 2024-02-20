@@ -7,8 +7,15 @@ use App\Models\Posts;
 
 class EditPostAction
 {
-    public function handle(PostsDTO $postsDTO,Posts $posts){
-        $postDetail = $posts->find($postsDTO->getId());
+    public function __construct(
+        protected Posts $posts,
+    )
+    {
+    }
+
+    public function handle(PostsDTO $postsDTO): void
+    {
+        $postDetail = $this->posts->find($postsDTO->getId());
         if(!empty($postDetail)){
             $postDetail->title = $postsDTO->getTitle();
             $postDetail->description = $postsDTO->getDescription();

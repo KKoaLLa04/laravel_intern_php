@@ -6,9 +6,16 @@ use App\Models\Posts;
 
 class RestorePostAction
 {
-    public function handle($id, Posts $posts){
+    public function __construct(
+        protected Posts $posts
+    )
+    {
+    }
+
+    public function handle($id): void
+    {
         if(!empty($id)){
-            $postDetail = $posts->withTrashed()->where('id', $id)->restore();
+            $this->posts->withTrashed()->where('id', $id)->restore();
         }
     }
 }

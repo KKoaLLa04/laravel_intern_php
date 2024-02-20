@@ -10,13 +10,12 @@ use App\Models\Posts;
 class EditPostFeature
 {
     public function __construct(
-        protected Posts $posts,
         protected EditPostAction $editPostAction
     )
     {
     }
 
     public function handle(PostsDTO $postsDTO): void{
-        $this->editPostAction->handle($postsDTO,$this->posts);
+        $this->editPostAction->handle($postsDTO);
     }
 }

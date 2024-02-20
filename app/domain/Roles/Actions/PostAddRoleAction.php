@@ -13,7 +13,8 @@ class PostAddRoleAction
     {
     }
 
-    public function handle(RoleDTO $roleDTO){
+    public function handle(RoleDTO $roleDTO): void
+    {
         $roles = $this->roles->create([
             'name' => $roleDTO->getName(),
             'display_name' => $roleDTO->getDisplayName(),
