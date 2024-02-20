@@ -22,6 +22,11 @@ it('only allows authorized roles to access edit roles', function () {
     $response = $this->get('/admin/roles/edit/'.$role->id);
 
     $response->assertStatus(200);
+
+    $this->assertDatabaseHas('user_roles', [
+        'user_id' => $authorizedUser->id,
+        'role_id' => $role->id
+    ]);
 });
 
 it('not allows authorized roles to access edit roles', function () {
@@ -38,4 +43,9 @@ it('not allows authorized roles to access edit roles', function () {
     $response = $this->get('/admin/roles/edit/'.$role->id);
 
     $response->assertStatus(403);
+
+    $this->assertDatabaseMissing('user_roles', [
+        'user_id' => $authorizedUser->id,
+        'role_id' => $role->id
+    ]);
 });

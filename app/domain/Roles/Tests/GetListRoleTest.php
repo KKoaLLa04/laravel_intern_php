@@ -53,6 +53,11 @@ it('only allows authorized roles to access list roles', function () {
     $response = $this->get('/admin/roles');
 
     $response->assertStatus(200);
+
+    $this->assertDatabaseHas('user_roles', [
+        'user_id' => $authorizedUser->id,
+        'role_id' => $role->id
+    ]);
 });
 
 //check 403 roles
@@ -70,4 +75,9 @@ it('not allows authorized category to access list category', function () {
     $response = $this->get('/admin/roles');
 
     $response->assertStatus(403);
+
+    $this->assertDatabaseMissing('user_roles', [
+        'user_id' => $authorizedUser->id,
+        'role_id' => $role->id
+    ]);
 });
