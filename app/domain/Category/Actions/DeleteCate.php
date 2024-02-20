@@ -3,7 +3,7 @@
 namespace App\domain\Category\Actions;
 
 use App\domain\Category\DTO\CategoryDTO;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -16,7 +16,7 @@ class DeleteCate
     {
     }
 
-    public function handle(Request $request, Categories $categories){
+    public function handle(Request $request, Category $categories){
         $id = $request->id;
         if(!empty($id)){
             $cateDetail = $categories->find($id);

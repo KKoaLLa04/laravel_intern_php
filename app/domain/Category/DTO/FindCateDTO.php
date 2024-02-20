@@ -6,19 +6,21 @@ use Illuminate\Http\Request;
 
 class FindCateDTO
 {
-    private $id;
+    private int $id;
 
     public function fromRequest(Request $request): self{
-        $this->id = $request->id;
+        if(!empty($request->get('id'))){
+            $this->id = $request->get('id');
+        }
         return $this;
     }
 
-    public function getId(){
-        return $this->id;
-    }
-
-    public function setId($id)
+    public function getId(): int
     {
-        $this->id = $id;
+        if(!empty($this->id)){
+            return $this->id;
+        }
+
+        return 0;
     }
 }

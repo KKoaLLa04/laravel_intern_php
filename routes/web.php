@@ -28,9 +28,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
 
         Route::post('post_add' ,[\App\domain\Category\Controllers\CategoryController::class, 'post_add'])->name('post_add')->can('category_add');
 
-        Route::get('edit/{posts}' ,[\App\domain\Category\Controllers\CategoryController::class, 'edit'])->name('edit')->can('category_edit');
+        Route::get('edit/{id}' ,[\App\domain\Category\Controllers\CategoryController::class, 'edit'])->name('edit')->can('category_edit');
 
-        Route::post('post_edit/{posts}' ,[\App\domain\Category\Controllers\CategoryController::class, 'post_edit'])->name('post_edit')->can('category_edit');
+        Route::post('post_edit/{id}' ,[\App\domain\Category\Controllers\CategoryController::class, 'post_edit'])->name('post_edit')->can('category_edit');
 
         Route::post('delete/{id}' ,[\App\domain\Category\Controllers\CategoryController::class, 'delete'])->name('delete')->can('category_delete');
     }) ;
@@ -66,7 +66,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
 
         Route::post('post_edit/{id}' ,[\App\domain\Users\Controllers\UsersController::class, 'post_edit'])->name('post_edit')->can('users_edit');
 
-        Route::post('delete/{id}' ,[\App\domain\Users\Controllers\UsersController::class, 'delete'])->name('delete')->can('users.delete')->can('users_delete');
+        Route::post('delete/{id}' ,[\App\domain\Users\Controllers\UsersController::class, 'delete'])->name('delete')->can('users_delete');
 
         Route::get('deleted' ,[\App\domain\Users\Controllers\UsersController::class, 'deleted'])->name('deleted')->can('users_delete');
 

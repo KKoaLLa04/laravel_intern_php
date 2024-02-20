@@ -2,11 +2,11 @@
 
 namespace App\domain\Posts\Actions;
 
-use App\Models\Categories;
+use App\Models\Category;
 
 class GetCateAction
 {
-    public function handle(Categories $categories){
+    public function handle(Category $categories){
         return $categories->all();
     }
 }

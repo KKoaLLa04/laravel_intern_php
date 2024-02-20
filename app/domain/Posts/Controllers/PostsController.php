@@ -16,7 +16,7 @@ use App\domain\Posts\Features\RestorePostFeature;
 use App\domain\Posts\Requests\PostEditRequest;
 use App\domain\Posts\Requests\PostRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Posts;
 use MongoDB\Driver\Session;
 
@@ -74,22 +74,26 @@ class PostsController extends Controller
         return back()->with('msg','Cập nhật bài viết thành công!');
     }
 
-    public function delete($id){
+    public function delete($id): \Illuminate\Http\RedirectResponse
+    {
         $this->deletePostFeature->handle($id);
         return back()->with('msg','Xóa bài viết thành công');
     }
 
-    public function deleted(){
+    public function deleted(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         $listPost = $this->deletedPostFeature->handle();
         return view('backend.posts.deleted', compact('listPost'));
     }
 
-    public function restore($id){
+    public function restore($id): \Illuminate\Http\RedirectResponse
+    {
         $this->restorePostFeature->handle($id);
         return back()->with('msg','Khôi phục bản ghi thành công');
     }
 
-    public function force_delete($id){
+    public function force_delete($id): \Illuminate\Http\RedirectResponse
+    {
         $this->forceDeleteFeature->handle($id);
         return back()->with('msg','Bản ghi đã bị xóa vĩnh viễn!');
     }

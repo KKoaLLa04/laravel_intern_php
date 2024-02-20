@@ -12,19 +12,19 @@ use App\domain\Category\Features\GetCategoryFeature;
 use App\domain\Category\Requests\CategoryRequest;
 use App\domain\Category\Requests\FindCateRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function __construct(
-        protected Categories $categories,
-        protected CategoryDTO $categoryDTO,
-        protected GetCategoryFeature $getCategoryFeature,
-        protected AddCategoryFeature $addCategoryFeature,
-        protected EditCategoryFeature $editCategoryFeature,
+        protected Category              $categories,
+        protected CategoryDTO           $categoryDTO,
+        protected GetCategoryFeature    $getCategoryFeature,
+        protected AddCategoryFeature    $addCategoryFeature,
+        protected EditCategoryFeature   $editCategoryFeature,
         protected DeleteCategoryFeature $deleteCategoryFeature,
-        protected FindCateFeature $findCateFeature,
+        protected FindCateFeature       $findCateFeature,
     )
     {
     }
@@ -48,20 +48,24 @@ class CategoryController extends Controller
         return back()->with('msg', 'Thêm danh mục bài viết thành công!');
     }
 
-    public function edit($id, FindCateRequest $findCateRequest){
-        $findCateDTO = new FindCateDTO();
-        $findCateDTO->setId($id);
-        $cateDetail = $this->findCateFeature->handle($findCateDTO);
+    public function edit($id, FindCateRequest $findCateRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
+//        $findCateDTO = new FindCateDTO();
+//        $findCateDTO->setId($id);
+        $dataDTO = $findCateRequest->getDTO();
+        $cateDetail = $this->findCateFeature->handle($dataDTO);
         return view('backend.category.edit', compact('cateDetail'));
     }
 
-    public function post_edit($id, CategoryRequest $categoryRequest){
+    public function post_edit($id, CategoryRequest $categoryRequest): \Illuminate\Http\RedirectResponse
+    {
         $data = $categoryRequest->getDTO();
         $this->editCategoryFeature->handle($data, $this->categories);
         return back()->with('msg','Cập nhật danh mục bài viết thành công');
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request): \Illuminate\Http\RedirectResponse
+    {
         $this->deleteCategoryFeature->handle($request, $this->categories);
         return back();
     }

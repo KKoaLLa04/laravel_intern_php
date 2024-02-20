@@ -3,12 +3,12 @@
 namespace App\domain\Category\Actions;
 
 use App\domain\Category\DTO\FindCateDTO;
-use App\Models\Categories;
+use App\Models\Category;
 
 class FindCateAction
 {
     public function __construct(
-        protected Categories $categories
+        protected Category $categories
     )
     {
     }

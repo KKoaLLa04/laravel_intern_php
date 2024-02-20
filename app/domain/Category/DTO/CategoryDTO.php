@@ -6,26 +6,33 @@ use Illuminate\Http\Request;
 
 class CategoryDTO
 {
-    private $title;
-    private $slug;
-    private $id;
+    private string $title;
+    private string $slug;
+    private int $id;
 
-    public function fromRequest(Request $request){
-        $this->id = $request->id;
+    public function fromRequest(Request $request): static
+    {
+        if(!empty($request->input('id'))){
+            $this->id = $request->input('id');
+        }
+
         $this->title = $request->input('title');
         $this->slug = $request->input('slug');
         return $this;
     }
 
-    public function getTitle(){
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
-    public function getSlug(){
+    public function getSlug(): string
+    {
         return $this->slug;
     }
 
-    public function getId(){
+    public function getId(): int
+    {
         return $this->id;
     }
 

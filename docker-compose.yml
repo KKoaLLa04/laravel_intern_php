@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+    php:
+        container_name: php
+        build:
+            context: .
+            target: php
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        ports:
+            - 8000:8080

@@ -3,12 +3,19 @@
 namespace App\domain\Category\Actions;
 
 use App\domain\Category\DTO\CategoryDTO;
-use App\Models\Categories;
+use App\Models\Category;
 
 class EditCate
 {
-    public function handle(CategoryDTO $categoryDTO,Categories $categories){
-        $cateDetail = $categories->find($categoryDTO->getId());
+    public function __construct(
+        protected Category $category,
+    )
+    {
+    }
+
+    public function handle(CategoryDTO $categoryDTO){
+
+        $cateDetail = $this->category->find($categoryDTO->getId());
         $cateDetail->title = $categoryDTO->getTitle();
         $cateDetail->slug = $categoryDTO->getSlug();
         $cateDetail->save();

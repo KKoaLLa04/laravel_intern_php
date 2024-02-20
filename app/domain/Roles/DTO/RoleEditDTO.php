@@ -10,11 +10,13 @@ class RoleEditDTO
 
     }
 
-    public function setId($id){
+    public function setId($id): void
+    {
         $this->id = $id;
     }
 
-    public function getId(){
+    public function getId(): int
+    {
         return $this->id;
     }
 }

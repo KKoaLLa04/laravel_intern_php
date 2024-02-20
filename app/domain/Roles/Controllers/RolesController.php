@@ -32,24 +32,28 @@ class RolesController extends Controller
     {
     }
 
-    public function index(){
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         $listRole = $this->getAllRoleFeature->handle();
         return view('backend.roles.index', compact('listRole'));
     }
 
-    public function add(){
+    public function add(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         $permissionParent = $this->getAddRoleFeature->handle();
         return view('backend.roles.add', compact('permissionParent'));
     }
 
-    public function post_add(RoleRequest $roleRequest){
+    public function post_add(RoleRequest $roleRequest): \Illuminate\Http\RedirectResponse
+    {
         $data = $roleRequest->getDTO();
         $this->postAddRoleFeature->handle($data);
 
         return back()->with('msg','Thêm chức vụ mới thành công');
     }
 
-    public function edit($id){
+    public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         $permissionParent = $this->getParentRoleFeature->handle();
 
         $roleEditDTO = new RoleEditDTO();
@@ -61,17 +65,20 @@ class RolesController extends Controller
         return view('backend.roles.edit', compact('permissionParent', 'roleDetail', 'permissionChecked'));
     }
 
-    public function post_edit($id, UpdateRoleRequest $roleRequest){
+    public function post_edit(UpdateRoleRequest $roleRequest): \Illuminate\Http\RedirectResponse
+    {
         $data = $roleRequest->getDTO();
         $this->postEditRoleFeature->handle($data);
         return back()->with('msg','Cập nhật chức vụ thành công');
     }
 
-    public function permission_add(){
+    public function permission_add(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    {
         return view('backend.roles.permission_add');
     }
 
-    public function permission_post_add(PermissionRequest $permissionRequest){
+    public function permission_post_add(PermissionRequest $permissionRequest): \Illuminate\Http\RedirectResponse
+    {
         $permission = Permission::create([
             'name' => $permissionRequest->module_parent,
             'display_name' => $permissionRequest->module_parent,

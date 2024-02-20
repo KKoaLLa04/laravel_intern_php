@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Models\Permission;
 use App\Models\Posts;
 use App\Models\User;
@@ -29,13 +29,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        $permissions = Permission::all();
-        if(!empty($permissions)){
-            foreach($permissions as $key => $item){
-                Gate::define($item->key_code, function($user) use ($item){
-                    return $user->checkPermissionAccess($item->key_code);
-                });
-            }
-        }
+         $permissions = Permission::all();
+         if(!empty($permissions)){
+             foreach($permissions as $key => $item){
+                 Gate::define($item->key_code, function($user) use ($item){
+                     return $user->checkPermissionAccess($item->key_code);
+                 });
+             }
+         }
     }
 }

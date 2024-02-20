@@ -11,7 +11,7 @@
     @if(session('msg'))
         <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <form action="{{route('admin.category.post_edit', $cateDetail)}}" method="POST">
+    <form action="{{route('admin.category.post_edit', $cateDetail->id)}}" method="POST">
         @csrf
         <div class="row">
             <div class="col-6">

@@ -3,12 +3,12 @@
 namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\GetCateAction;
-use App\Models\Categories;
+use App\Models\Category;
 
 class GetCateFeature
 {
     public function __construct(
-        protected Categories $categories,
+        protected Category      $categories,
         protected GetCateAction $getCateAction,
     )
     {

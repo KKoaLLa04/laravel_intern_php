@@ -14,6 +14,6 @@ class GetDataLastestAction
     }
 
     public function handle(): object{
-        return $this->posts->orderBy('created_at', 'DESC')->limit(6)->get();
+        return Posts::all();
     }
 }
