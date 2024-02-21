@@ -12,13 +12,11 @@ use App\domain\Category\Features\GetCategoryFeature;
 use App\domain\Category\Requests\CategoryRequest;
 use App\domain\Category\Requests\FindCateRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function __construct(
-        protected Category              $categories,
         protected CategoryDTO           $categoryDTO,
         protected GetCategoryFeature    $getCategoryFeature,
         protected AddCategoryFeature    $addCategoryFeature,
