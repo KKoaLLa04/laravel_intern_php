@@ -7,8 +7,8 @@ class RoleEditDTO
     private int $id;
 
     public function fromRequest(\Illuminate\Http\Request $request): self{
-        if(!empty($request->id)){
-            $this->id = $request->id;
+        if(!empty($request->get('id'))){
+            $this->id = $request->get('id');
         }
 
         return $this;

@@ -15,8 +15,8 @@ class CommentDTO
     private int $user_id;
 
     public function fromRequest(Request $request){
-        if(!empty($request->id)){
-            $this->id = $request->id;
+        if(!empty($request->get('id'))){
+            $this->id = $request->get('id');
         }
         if(!empty($request->name)){
             $this->name = $request->input('name');

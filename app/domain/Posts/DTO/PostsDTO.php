@@ -14,7 +14,9 @@ class PostsDTO
 
     public function fromRequest(\Illuminate\Http\Request $request): self
     {
-        $this->id = $request->id;
+        if(!empty($request->get('id'))){
+            $this->id = $request->get('id');
+        }
         $this->title = $request->input('title');
         $this->slug = $request->input('slug');
         $this->description = $request->input('description');

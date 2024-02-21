@@ -17,8 +17,8 @@ class RoleDTO
         if(!empty($request->permission_id)){
             $this->permission_id = $request->input('permission_id');
         }
-        if(!empty($request->id)){
-            $this->id = $request->id;
+        if(!empty($request->get('id'))){
+            $this->id = $request->get('id');
         }
         return $this;
     }

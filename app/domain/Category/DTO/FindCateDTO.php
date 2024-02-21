@@ -9,8 +9,8 @@ class FindCateDTO
     private int $id;
 
     public function fromRequest(Request $request): self{
-        if(!empty($request->id)){
-            $this->id = $request->id;
+        if(!empty($request->get('id'))){
+            $this->id = $request->get('id');
         }
         return $this;
     }

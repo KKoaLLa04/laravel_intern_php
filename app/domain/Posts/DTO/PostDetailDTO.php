@@ -7,7 +7,7 @@ class PostDetailDTO
     private int $id;
     public function fromRequest(\Illuminate\Http\Request $request): self
     {
-        $this->id = $request->id;
+        $this->id = $request->get('id');
         return $this;
     }
 
