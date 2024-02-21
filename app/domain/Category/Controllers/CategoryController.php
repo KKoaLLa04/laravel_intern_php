@@ -10,6 +10,7 @@ use App\domain\Category\Features\EditCategoryFeature;
 use App\domain\Category\Features\FindCateFeature;
 use App\domain\Category\Features\GetCategoryFeature;
 use App\domain\Category\Requests\CategoryRequest;
+use App\domain\Category\Requests\DeleteRequest;
 use App\domain\Category\Requests\FindCateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -46,22 +47,23 @@ class CategoryController extends Controller
         return back()->with('msg', 'Thêm danh mục bài viết thành công!');
     }
 
-    public function edit($id, FindCateRequest $findCateRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit(FindCateRequest $findCateRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $dataDTO = $findCateRequest->getDTO();
         $cateDetail = $this->findCateFeature->handle($dataDTO);
         return view('backend.category.edit', compact('cateDetail'));
     }
 
-    public function post_edit($id, CategoryRequest $categoryRequest): \Illuminate\Http\RedirectResponse
+    public function post_edit(CategoryRequest $categoryRequest): \Illuminate\Http\RedirectResponse
     {
         $data = $categoryRequest->getDTO();
-        $this->editCategoryFeature->handle($data, $this->categories);
+        $this->editCategoryFeature->handle($data);
         return back()->with('msg','Cập nhật danh mục bài viết thành công');
     }
 
-    public function delete(Request $request): \Illuminate\Http\RedirectResponse
+    public function delete(DeleteRequest $request): \Illuminate\Http\RedirectResponse
     {
+        $data = $request->getDTO();
         $this->deleteCategoryFeature->handle($request);
         return back();
     }

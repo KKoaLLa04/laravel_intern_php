@@ -8,12 +8,12 @@ use App\Models\Category;
 class FindCateAction
 {
     public function __construct(
-        protected Category $categories
+        protected Category $category
     )
     {
     }
 
     public function handle(FindCateDTO $findCateDTO){
-        return $this->categories->find($findCateDTO->getId());
+        return $this->category->find($findCateDTO->getId());
     }
 }

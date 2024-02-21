@@ -3,7 +3,7 @@
 namespace App\domain\Posts\Actions;
 
 use App\domain\Posts\DTO\ListPostDTO;
-use App\Models\Posts;
+use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserRole;

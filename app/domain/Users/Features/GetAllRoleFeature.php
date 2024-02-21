@@ -12,7 +12,8 @@ class GetAllRoleFeature
     {
     }
 
-    public function handle(){
+    public function handle(): \Illuminate\Database\Eloquent\Collection
+    {
         return $this->getAllRoleAction->handle();
     }
 }

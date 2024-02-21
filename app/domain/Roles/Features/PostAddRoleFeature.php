@@ -14,7 +14,8 @@ class PostAddRoleFeature
     {
     }
 
-    public function handle(RoleDTO $roleDTO){
+    public function handle(RoleDTO $roleDTO): void
+    {
         $this->postAddRoleAction->handle($roleDTO);
     }
 }

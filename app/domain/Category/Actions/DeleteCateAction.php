@@ -3,22 +3,24 @@
 namespace App\domain\Category\Actions;
 
 use App\domain\Category\DTO\CategoryDTO;
+use App\domain\Category\DTO\DeleteDTO;
 use App\Models\Category;
-use App\Models\Posts;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class DeleteCate
+class DeleteCateAction
 {
     public function __construct(
-        protected Posts $posts,
+        protected Post $posts,
         protected Category $category,
     )
     {
     }
 
-    public function handle(Request $request){
-        $id = $request->id;
+    public function handle(DeleteDTO $deleteDTO): void
+    {
+        $id = $deleteDTO->getId();
         if(!empty($id)){
             $cateDetail = $this->category->find($id);
             $postCount = $this->posts->where('cate_id', $id)->get()->count();

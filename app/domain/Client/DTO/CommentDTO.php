@@ -26,9 +26,9 @@ class CommentDTO
             $this->email = $request->input('email');
         }
 
-        if(!empty($request->content)){
-            $this->content = $request->input('content');
-        }
+//        if(!empty($request->content)){
+//            $this->content = $request->input('content');
+//        }
 
         if(!empty($request->parent_id)){
             $this->parent_id = $request->input('parent_id');

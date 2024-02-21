@@ -4,12 +4,12 @@ namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\AddPostAction;
 use App\domain\Posts\DTO\PostsDTO;
-use App\Models\Posts;
+use App\Models\Post;
 
 class AddPostFeature
 {
     public function __construct(
-        protected Posts $posts,
+        protected Post $posts,
         protected AddPostAction $addPostAction,
     ){
 

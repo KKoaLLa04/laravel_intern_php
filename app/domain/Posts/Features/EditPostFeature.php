@@ -5,7 +5,6 @@ namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\EditPostAction;
 use App\domain\Posts\DTO\PostsDTO;
-use App\Models\Posts;
 
 class EditPostFeature
 {

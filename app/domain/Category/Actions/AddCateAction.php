@@ -5,7 +5,7 @@ namespace App\domain\Category\Actions;
 use App\domain\Category\DTO\CategoryDTO;
 use App\Models\Category;
 
-class AddCate
+class AddCateAction
 {
     public function __construct(
         protected Category $category

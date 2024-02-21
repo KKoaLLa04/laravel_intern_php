@@ -5,7 +5,7 @@ namespace App\domain\Category\Actions;
 use App\domain\Category\DTO\CategoryDTO;
 use App\Models\Category;
 
-class EditCate
+class EditCateAction
 {
     public function __construct(
         protected Category $category,
@@ -13,7 +13,8 @@ class EditCate
     {
     }
 
-    public function handle(CategoryDTO $categoryDTO){
+    public function handle(CategoryDTO $categoryDTO): void
+    {
 
         $cateDetail = $this->category->find($categoryDTO->getId());
         $cateDetail->title = $categoryDTO->getTitle();

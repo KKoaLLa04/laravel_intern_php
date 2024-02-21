@@ -5,7 +5,7 @@ namespace App\domain\Category\Actions;
 use App\domain\Category\Features\GetCategoryFeature;
 use App\Models\Category;
 
-class GetListCate
+class GetListCateAction
 {
     public function __construct(
         protected Category $category,

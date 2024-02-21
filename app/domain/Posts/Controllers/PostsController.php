@@ -62,7 +62,7 @@ class PostsController extends Controller
     public function edit(GetEditRequest $getEditRequest): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $data = $getEditRequest->getDTO();
-        $postDetail = $this->getPostDetailFeature->handle();
+        $postDetail = $this->getPostDetailFeature->handle($data);
         $category = $this->getCateFeature->handle();
         if(empty($postDetail)){
             return redirect()->route('admin.posts.homeController')->with('error','Liên kết không tồn tại hoặc đã bị xóa');

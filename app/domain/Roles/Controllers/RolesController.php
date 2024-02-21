@@ -79,21 +79,22 @@ class RolesController extends Controller
 
     public function permission_post_add(PermissionRequest $permissionRequest): \Illuminate\Http\RedirectResponse
     {
+//        insert role database to role_permission
 //        $data = $permissionRequest->getDTO();
-        $permission = Permission::create([
-            'name' => $permissionRequest->module_parent,
-            'display_name' => $permissionRequest->module_parent,
-            'parent_id' => 0,
-        ]);
-
-            foreach($permissionRequest->module_children as $value){
-                Permission::create([
-                    'name' => $value,
-                    'display_name' => $value,
-                    'parent_id' => $permission->id,
-                    'key_code' => $permission->name.'_'.$value
-                ]);
-            }
-        return back()->with('msg','Thêm dữ liệu thành công');
+//        $permission = Permission::create([
+//            'name' => $permissionRequest->module_parent,
+//            'display_name' => $permissionRequest->module_parent,
+//            'parent_id' => 0,
+//        ]);
+//
+//            foreach($permissionRequest->module_children as $value){
+//                Permission::create([
+//                    'name' => $value,
+//                    'display_name' => $value,
+//                    'parent_id' => $permission->id,
+//                    'key_code' => $permission->name.'_'.$value
+//                ]);
+//            }
+//        return back()->with('msg','Thêm dữ liệu thành công');
     }
 }

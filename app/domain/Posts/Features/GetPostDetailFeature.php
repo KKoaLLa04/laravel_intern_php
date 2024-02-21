@@ -3,6 +3,7 @@
 namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\GetPostDetailAction;
+use App\domain\Posts\DTO\PostDetailDTO;
 
 class GetPostDetailFeature
 {
@@ -12,7 +13,7 @@ class GetPostDetailFeature
     {
     }
 
-    public function handle(){
-        return $this->getPostDetailAction->handle();
+    public function handle(PostDetailDTO $postDetailDTO){
+        return $this->getPostDetailAction->handle($postDetailDTO);
     }
 }
