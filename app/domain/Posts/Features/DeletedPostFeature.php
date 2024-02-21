@@ -3,7 +3,7 @@
 namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\DeletedPostAction;
-use App\Models\Posts;
+use App\domain\Posts\Requests\DeleteRequest;
 
 class DeletedPostFeature
 {
@@ -13,8 +13,8 @@ class DeletedPostFeature
     {
     }
 
-    public function handle(){
-        $data = $this->deletedPostAction->handle();
-        return $data;
+    public function handle()
+    {
+        return $this->deletedPostAction->handle();
     }
 }

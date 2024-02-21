@@ -2,18 +2,19 @@
 
 namespace App\domain\Posts\Actions;
 
-use App\Models\Posts;
+use App\Models\Post;
 
 class DeletedPostAction
 {
     public function __construct(
-        protected Posts $posts
+        protected Post $posts
     )
     {
     }
 
-    public function handle(): void
+    public function handle()
     {
-        $this->posts::with(['category','users'])->onlyTrashed()->get();
+        return $this->posts::with(['category','users'])->onlyTrashed()->get();
+
     }
 }

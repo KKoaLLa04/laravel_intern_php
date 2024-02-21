@@ -2,20 +2,21 @@
 
 namespace App\domain\Posts\Actions;
 
+use App\domain\Posts\DTO\DeleteDTO;
 use App\domain\Posts\DTO\PostsDTO;
-use App\Models\Posts;
+use App\Models\Post;
 
 class DeletePostAction
 {
     public function __construct(
-        protected Posts $posts,
+        protected Post $posts,
     )
     {
     }
 
-    public function handle($id): void
+    public function handle(DeleteDTO $deleteDTO): void
     {
-        $postDetail = $this->posts->find($id);
+        $postDetail = $this->posts->find($deleteDTO->getId());
         if(!empty($postDetail)){
 //            $path = 'uploads/posts/'.$postDetail->thumbnail;
 //            if(file_exists($path)){

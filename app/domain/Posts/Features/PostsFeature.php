@@ -4,7 +4,7 @@ namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\AddPostAction;
 use App\domain\Posts\DTO\PostsDTO;
-use App\Models\Posts;
+use App\Models\Post;
 
 class PostsFeature
 {
@@ -14,7 +14,7 @@ class PostsFeature
     {
     }
 
-    public function handle(PostsDTO $postsDTO, Posts $posts): void{
-        $this->addPostAction->handle($postsDTO, $posts);
+    public function handle(PostsDTO $postsDTO): void{
+        $this->addPostAction->handle($postsDTO);
     }
 }

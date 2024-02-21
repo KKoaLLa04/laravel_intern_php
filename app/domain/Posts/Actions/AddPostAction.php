@@ -4,13 +4,13 @@ namespace App\domain\Posts\Actions;
 
 
 use App\domain\Posts\DTO\PostsDTO;
-use App\Models\Posts;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 class AddPostAction
 {
     public function __construct(
-        protected Posts $posts,
+        protected Post $posts,
     )
     {
     }

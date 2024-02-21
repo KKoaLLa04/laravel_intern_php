@@ -9,7 +9,6 @@ use App\Models\User;
 class AddUserFeature
 {
     public function __construct(
-        protected User $user,
         protected AddUserAction $addUserAction
     ){
 

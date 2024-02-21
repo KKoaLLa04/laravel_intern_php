@@ -3,7 +3,7 @@
 namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\RestorePostAction;
-use App\Models\Posts;
+use App\domain\Posts\DTO\DeleteDTO;
 
 class RestorePostFeature
 {
@@ -13,7 +13,7 @@ class RestorePostFeature
     {
     }
 
-    public function handle($id): void{
-        $this->restorePostAction->handle($id);
+    public function handle(DeleteDTO $deleteDTO): void{
+        $this->restorePostAction->handle($deleteDTO);
     }
 }

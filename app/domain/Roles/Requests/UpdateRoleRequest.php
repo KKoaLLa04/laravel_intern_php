@@ -23,7 +23,7 @@ class UpdateRoleRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required' => 'Tên chức vụ không được để trống',

@@ -3,17 +3,17 @@
 namespace App\domain\Client\Actions;
 
 
-use App\Models\Posts;
+use App\Models\Post;
 
 class GetDataLastestAction
 {
     public function __construct(
-        protected Posts $posts
+        protected Post $posts
     )
     {
     }
 
     public function handle(): object{
-        return Posts::all();
+        return Post::all();
     }
 }

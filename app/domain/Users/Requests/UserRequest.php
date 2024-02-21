@@ -17,7 +17,7 @@ class UserRequest extends FormRequest
             'name' => 'required|min:5',
             'email' => 'required|email|unique:users',
             'username' => 'required|min:4',
-//            'group_id' => 'required|integer',
+            'role' => 'required|integer',
             'password' => 'required|min:3',
             'password_confirmation' => 'required|same:password'
         ];
@@ -39,7 +39,7 @@ class UserRequest extends FormRequest
           'name' => 'Họ và tên',
           'email' => 'Địa chỉ email',
           'username' => 'Tên đăng nhập',
-          'group_id' => 'Nhóm nguời dùng',
+          'role' => 'Nhóm nguời dùng',
           'password' => 'Mật khẩu',
           'password_confirmation' => 'Nhập lại mật khẩu',
         ];

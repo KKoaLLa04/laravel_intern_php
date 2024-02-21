@@ -2,6 +2,7 @@
 
 namespace App\domain\Roles\Requests;
 
+use App\domain\Roles\DTO\RoleDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PermissionRequest extends FormRequest
@@ -22,5 +23,9 @@ class PermissionRequest extends FormRequest
     {
         return [
         ];
+    }
+
+    public function getDTO(): RoleDTO{
+        return (new RoleDTO())->fromRequest($this);
     }
 }

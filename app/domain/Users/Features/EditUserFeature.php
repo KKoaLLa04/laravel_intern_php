@@ -13,7 +13,8 @@ class EditUserFeature
     {
     }
 
-    public function handle(UserDTO $userDTO){
+    public function handle(UserDTO $userDTO): void
+    {
         $this->editUserAction->handle($userDTO);
     }
 }

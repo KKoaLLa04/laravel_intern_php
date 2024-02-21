@@ -6,7 +6,14 @@ use App\Models\Category;
 
 class GetCateAction
 {
-    public function handle(Category $categories){
-        return $categories->all();
+    public function __construct(
+        protected Category $category,
+    )
+    {
+    }
+
+    public function handle(): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->category->all();
     }
 }

@@ -10,7 +10,7 @@ class UserDTO
     private string $email;
     private string $password='';
     private string $username;
-    private array $group;
+    private array $role;
     private int $id;
 
     public function fromRequest(Request $request): self{
@@ -21,11 +21,17 @@ class UserDTO
             $this->password = $request->input('password');
         }
         if(!empty($request->input('group'))){
-            $this->group = $request->input('group');
+            $this->role = $request->input('role');
         }
-        $this->name = $request->input('name');
-        $this->email = $request->input('email');
-        $this->username = $request->input('username');
+        if(!empty($request->input('name'))){
+            $this->name = $request->input('name');
+        }
+        if(!empty($request->input('email'))){
+            $this->name = $request->input('email');
+        }
+        if(!empty($request->input('username'))){
+            $this->name = $request->input('username');
+        }
 
         return $this;
     }
@@ -50,9 +56,9 @@ class UserDTO
         return $this->username;
     }
 
-    public function getGroup(): array
+    public function getRole(): array
     {
-        return $this->group;
+        return $this->role;
     }
 
     public function getId(): int

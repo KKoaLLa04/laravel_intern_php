@@ -10,6 +10,7 @@ use App\domain\Roles\Features\GetDetailRoleFeature;
 use App\domain\Roles\Features\GetParentRoleFeature;
 use App\domain\Roles\Features\PostAddRoleFeature;
 use App\domain\Roles\Features\PostEditRoleFeature;
+use App\domain\Roles\Requests\EditRequest;
 use App\domain\Roles\Requests\PermissionRequest;
 use App\domain\Roles\Requests\RoleRequest;
 use App\domain\Roles\Requests\UpdateRoleRequest;
@@ -52,12 +53,11 @@ class RolesController extends Controller
         return back()->with('msg','Thêm chức vụ mới thành công');
     }
 
-    public function edit($id): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit(EditRequest $editRequest): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $permissionParent = $this->getParentRoleFeature->handle();
 
-        $roleEditDTO = new RoleEditDTO();
-        $roleEditDTO->setId($id);
+        $roleEditDTO = $editRequest->getDTO();
         $roleDetail = $this->getDetailRoleFeature->handle($roleEditDTO);
 
         $permissionChecked = $roleDetail->permissions;
@@ -79,6 +79,7 @@ class RolesController extends Controller
 
     public function permission_post_add(PermissionRequest $permissionRequest): \Illuminate\Http\RedirectResponse
     {
+//        $data = $permissionRequest->getDTO();
         $permission = Permission::create([
             'name' => $permissionRequest->module_parent,
             'display_name' => $permissionRequest->module_parent,

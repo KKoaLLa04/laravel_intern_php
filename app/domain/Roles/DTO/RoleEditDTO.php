@@ -6,13 +6,12 @@ class RoleEditDTO
 {
     private int $id;
 
-    public function fromRequest(){
+    public function fromRequest(\Illuminate\Http\Request $request): self{
+        if(!empty($request->id)){
+            $this->id = $request->id;
+        }
 
-    }
-
-    public function setId($id): void
-    {
-        $this->id = $id;
+        return $this;
     }
 
     public function getId(): int

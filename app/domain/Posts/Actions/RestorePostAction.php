@@ -2,20 +2,21 @@
 
 namespace App\domain\Posts\Actions;
 
-use App\Models\Posts;
+use App\domain\Posts\DTO\DeleteDTO;
+use App\Models\Post;
 
 class RestorePostAction
 {
     public function __construct(
-        protected Posts $posts
+        protected Post $posts
     )
     {
     }
 
-    public function handle($id): void
+    public function handle(DeleteDTO $deleteDTO): void
     {
-        if(!empty($id)){
-            $this->posts->withTrashed()->where('id', $id)->restore();
+        if(!empty($deleteDTO->getId())){
+            $this->posts->withTrashed()->where('id', $deleteDTO->getId())->restore();
         }
     }
 }

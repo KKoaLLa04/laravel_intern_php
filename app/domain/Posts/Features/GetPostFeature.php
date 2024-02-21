@@ -19,7 +19,7 @@ class GetPostFeature
     public function handle(ListPostDTO $listPostDTO){
         $isAdmin = $this->checkUserIsAdminAction->handle($listPostDTO);
         $listPostDTO->setIsAdmin($isAdmin);
-       $data = $this->getListAction->handle($listPostDTO);
+        $data = $this->getListAction->handle($listPostDTO);
         return $data;
     }
 }

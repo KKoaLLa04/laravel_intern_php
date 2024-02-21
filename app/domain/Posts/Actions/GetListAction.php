@@ -20,9 +20,9 @@ class GetListAction
 
     public function handle(ListPostDTO $listPostDTO){
         if($listPostDTO->getIsAdmin()){
-            $data = Posts::with(['category','users'])->get();
+            $data = Post::with(['category','users'])->get();
         }else{
-            $data = Posts::with(['category','users'])->where('user_id', $listPostDTO->getAuthId())->get();
+            $data = Post::with(['category','users'])->where('user_id', $listPostDTO->getAuthId())->get();
         }
 
        return $data;

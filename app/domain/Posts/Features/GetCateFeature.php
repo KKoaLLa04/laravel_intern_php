@@ -8,14 +8,14 @@ use App\Models\Category;
 class GetCateFeature
 {
     public function __construct(
-        protected Category      $categories,
         protected GetCateAction $getCateAction,
     )
     {
 
     }
 
-    public function handle(){
-        return $this->getCateAction->handle($this->categories);
+    public function handle(): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->getCateAction->handle();
     }
 }

@@ -14,15 +14,26 @@ class EditUserAction
     {
     }
 
-    public function handle(UserDTO $userDTO){
+    public function handle(UserDTO $userDTO): void
+    {
+//        $user = $this->user->find($userDTO->getId());
+//        $user->name = $userDTO->getName();
+//        $user->email = $userDTO->getEmail();
+//        $user->username = $userDTO->getUsername();
+//        $user->group_id = $userDTO->getGroupId();
+//        if(!empty($userDTO->getPassword())){
+//            $user->password = Hash::make($userDTO->getPassword());
+//        }
+//        $user->save();
+
+        $user = $this->user->find($userDTO->getId())->update([
+            'name' => $userDTO->getName(),
+            'email' => $userDTO->getEmail(),
+            'username' => $userDTO->getUsername(),
+            'password' => Hash::make($userDTO->getPassword())
+        ]);
+
         $user = $this->user->find($userDTO->getId());
-        $user->name = $userDTO->getName();
-        $user->email = $userDTO->getEmail();
-        $user->username = $userDTO->getUsername();
-        $user->group_id = $userDTO->getGroupId();
-        if(!empty($userDTO->getPassword())){
-            $user->password = Hash::make($userDTO->getPassword());
-        }
-        $user->save();
+        $user->roles()->sync($userDTO->getRole());
     }
 }

@@ -3,19 +3,17 @@
 namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\DeletePostAction;
-use App\domain\Posts\DTO\PostsDTO;
-use App\Models\Posts;
+use App\domain\Posts\DTO\DeleteDTO;
 
 class DeletePostFeature
 {
     public function __construct(
-        protected Posts $posts,
         protected DeletePostAction $deletePostAction
     )
     {
     }
 
-    public function handle($id): void{
-        $this->deletePostAction->handle($id);
+    public function handle(DeleteDTO $deleteDTO): void{
+        $this->deletePostAction->handle($deleteDTO);
     }
 }

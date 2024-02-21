@@ -3,7 +3,7 @@
 namespace App\domain\Posts\Features;
 
 use App\domain\Posts\Actions\ForceDeleteAction;
-use App\Models\Posts;
+use App\domain\Posts\DTO\DeleteDTO;
 
 class ForceDeleteFeature
 {
@@ -13,7 +13,7 @@ class ForceDeleteFeature
     {
     }
 
-    public function handle($id): void{
-        $this->forceDeleteAction->handle($id);
+    public function handle(DeleteDTO $deleteDTO): void{
+        $this->forceDeleteAction->handle($deleteDTO);
     }
 }

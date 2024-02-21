@@ -4,13 +4,13 @@ namespace App\domain\Posts\DTO;
 
 class PostsDTO
 {
-    private $title;
-    private $description;
-    private $content;
-    private $thumbnail;
-    private $slug;
-    private $cate_id;
-    private $id;
+    private string $title;
+    private string $description;
+    private string $content;
+    private string $thumbnail;
+    private string $slug;
+    private int $cate_id;
+    private int $id;
 
     public function fromRequest(\Illuminate\Http\Request $request): self
     {
@@ -24,34 +24,38 @@ class PostsDTO
         return $this;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
 
-    public function getThumbnail(){
+    public function getThumbnail(): string
+    {
         return $this->thumbnail;
     }
 
-    public function getSlug(){
+    public function getSlug(): string
+    {
         return $this->slug;
     }
 
-    public function getCateId(){
+    public function getCateId(): int
+    {
         return $this->cate_id;
     }
 
-    public function getId(){
+    public function getId(): int
+    {
         return $this->id;
     }
 }

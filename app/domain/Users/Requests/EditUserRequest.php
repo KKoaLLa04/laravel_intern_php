@@ -18,6 +18,7 @@ class EditUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email,'.$this->id,
             'username' => 'required|min:4',
 //            'group_id' => 'required|integer',
+            'role' => 'required|integer'
         ];
     }
 
