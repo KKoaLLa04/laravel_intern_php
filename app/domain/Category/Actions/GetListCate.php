@@ -7,8 +7,15 @@ use App\Models\Category;
 
 class GetListCate
 {
-    public function handle(Category $categories){
-        $data = $categories->all();
+    public function __construct(
+        protected Category $category,
+    )
+    {
+    }
+
+    public function handle( ): \Illuminate\Database\Eloquent\Collection
+    {
+        $data = $this->category->all();
         return $data;
     }
 }

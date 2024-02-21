@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $lists = $this->getCategoryFeature->handle($this->categories);
+        $lists = $this->getCategoryFeature->handle();
         return view('backend.category.index', compact('lists'));
     }
 

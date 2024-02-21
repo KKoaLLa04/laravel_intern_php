@@ -4,7 +4,6 @@ namespace App\domain\Category\Features;
 
 use App\domain\Category\Actions\GetListCate;
 use App\domain\Posts\Actions\GetListAction;
-use App\Models\Category;
 
 class GetCategoryFeature
 {
@@ -14,8 +13,9 @@ class GetCategoryFeature
     {
     }
 
-    public function handle(Category $categories){
-        $data = $this->getListCate->handle($categories);
+    public function handle(): \Illuminate\Database\Eloquent\Collection
+    {
+        $data = $this->getListCate->handle();
         return $data;
     }
 }
