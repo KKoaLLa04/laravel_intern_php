@@ -64,7 +64,7 @@ class CategoryController extends Controller
     public function delete(DeleteRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->getDTO();
-        $this->deleteCategoryFeature->handle($request);
+        $this->deleteCategoryFeature->handle($data);
         return back();
     }
 }
