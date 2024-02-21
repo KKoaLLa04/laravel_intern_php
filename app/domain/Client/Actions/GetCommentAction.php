@@ -4,13 +4,13 @@ namespace App\domain\Client\Actions;
 
 use App\domain\Client\DTO\DetailDTO;
 use App\Models\Comment;
-use App\Models\Posts;
+use App\Models\Post;
 
 class GetCommentAction
 {
     public function __construct(
         protected Comment $comment,
-        protected Posts $posts
+        protected Post $posts
     )
     {
     }

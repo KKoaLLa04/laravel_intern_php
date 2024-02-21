@@ -3,17 +3,16 @@
 namespace App\domain\Client\Features;
 
 use App\domain\Client\Actions\GetDataLastestAction;
-use App\domain\Client\DTO\HomeDTO;
 
 class GetDataLatestFeature
 {
     public function __construct(
-        protected GetDataLastestAction $GetDataLastestAction
+        protected GetDataLastestAction $getDataLastestAction,
     )
     {
     }
 
     public function handle(): object{
-        return $this->GetDataLastestAction->handle();
+        return $this->getDataLastestAction->handle();
     }
 }

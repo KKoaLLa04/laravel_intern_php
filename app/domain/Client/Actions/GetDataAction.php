@@ -2,12 +2,12 @@
 
 namespace App\domain\Client\Actions;
 
-use App\Models\Posts;
+use App\Models\Post;
 
 class GetDataAction
 {
     public function __construct(
-        protected Posts $posts
+        protected Post $posts
     )
     {
     }

@@ -3,7 +3,6 @@
 namespace App\domain\Client\Features;
 
 use App\domain\Client\Actions\GetDataAction;
-use App\Models\Posts;
 
 class GetDataFeature
 {

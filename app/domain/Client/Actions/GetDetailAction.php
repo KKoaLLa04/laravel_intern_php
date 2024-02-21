@@ -3,12 +3,12 @@
 namespace App\domain\Client\Actions;
 
 use App\domain\Client\DTO\DetailDTO;
-use App\Models\Posts;
+use App\Models\Post;
 
 class GetDetailAction
 {
     public function __construct(
-        protected Posts $posts
+        protected Post $posts
     )
     {
     }
